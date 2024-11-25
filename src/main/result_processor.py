@@ -19,8 +19,6 @@ def write_results(output_file: Path, tag_counts: dict, port_protocol_counts: dic
         for tag, count in sorted(tag_counts.items()):
             f.write(f"{tag},{count}\n")
 
-        logger.info(f"Writing results for port/protocol counts to output file: {output_file}")
-
         f.write("\n\n=========================================\n\n")
         f.write("Port protocol combination counts:\n\n")
         f.write("Port,Protocol,Count\n")
