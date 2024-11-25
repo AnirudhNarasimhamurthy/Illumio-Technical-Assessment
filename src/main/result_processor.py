@@ -22,7 +22,6 @@ def write_results(output_file: Path, tag_counts: dict, port_protocol_counts: dic
         f.write("\n\n=========================================\n\n")
         f.write("Port protocol combination counts:\n\n")
         f.write("Port,Protocol,Count\n")
-        print('Port protocol count is: ', port_protocol_counts)
         for (port, protocol), count in sorted(port_protocol_counts.items()):
             f.write(f"{port},{protocol},{count}\n")
 

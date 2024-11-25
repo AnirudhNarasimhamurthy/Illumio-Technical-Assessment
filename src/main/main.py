@@ -22,15 +22,15 @@ def main():
     args = parser.parse_args()
 
     try:
-        flow_path = Path(args.flow_log_file)
+        flow_logs_path = Path(args.flow_log_file)
         mapping_path = Path(args.mapping_file)
 
-        if not flow_path.exists() or not mapping_path.exists():
+        if not flow_logs_path.exists() or not mapping_path.exists():
             logger.error("Input file(s) not found")
             return 1
 
         mappings = load_lookup_table_mapping(mapping_path)
-        tag_counts, port_protocol_counts = process_flow_logs(flow_path, mappings)
+        tag_counts, port_protocol_counts = process_flow_logs(flow_logs_path, mappings)
 
         # Get project root directory (2 levels up from the script)
         project_root = Path(__file__).parent.parent.parent
@@ -41,7 +41,7 @@ def main():
 
         # Generate output filename with timestamp
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        output_path = output_dir / f'flow_analysis_{timestamp}.csv'
+        output_path = output_dir / f'flow_log_analysis_{timestamp}.csv'
 
         write_results(output_path, tag_counts, port_protocol_counts)
 

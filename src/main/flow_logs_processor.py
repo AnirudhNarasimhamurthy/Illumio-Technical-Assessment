@@ -65,6 +65,7 @@ def process_flow_logs(log_file: Path, mappings: dict) -> tuple[dict, dict]:
 
             try:
                 # Extract dst port and the protocol number and name
+                #TODO: Add more error handling for dstport and protocol number fields
                 dstport = fields[dstport_index]
                 protocol_number = fields[protocol_index]
                 protocol_name = get_protocol_name(protocol_number)
